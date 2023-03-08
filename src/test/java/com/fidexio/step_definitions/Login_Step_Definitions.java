@@ -50,15 +50,18 @@ public class Login_Step_Definitions {
         String actualTitle=Driver.getDriver().getTitle();
         Assert.assertTrue(expectedTitle.equals(expectedTitle));
     }
-
-
-    @When("user enters invalid mail {string} or {string}")
-    public void userEntersInvalidMailOr(String email, String password) {
+    @When("user enters invalid mail {string} or password{string}")
+    public void userEntersInvalidMailOrPassword(String email, String password) {
         loginPage.login(email,password);
     }
-
     @Then("{string} should be displayed")
-    public void shouldBeDisplayed(String arg0) {
-        System.out.println("loginPage.alertMessage.getText() = " + loginPage.alertMessage.getText());
+    public void shouldBeDisplayed(String expectedWrongText) {
+        String actualWrongText=loginPage.alertMessage.getText();
+        Assert.assertTrue(expectedWrongText.equals(actualWrongText));
     }
+
+
+
+
+
 }

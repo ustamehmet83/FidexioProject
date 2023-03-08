@@ -22,7 +22,7 @@ Feature:Login Functionality
       | posmanager50@info.com   | posmanager   |
   @wip
   Scenario Outline: User login with invalid credentials
-      When user enters invalid mail "<email>" or "<password>"
+      When user enters invalid mail "<email>" or password"<password>"
       And user click login button
       Then "Wrong login/password" should be displayed
 
