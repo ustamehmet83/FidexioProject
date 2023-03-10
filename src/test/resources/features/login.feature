@@ -36,7 +36,7 @@ Feature:Login Functionality
   Scenario Outline: "Please fill out this field." message should be displayed
     When user enters empty mail "<email>" or password"<password>"
     And user click login button
-    Then "Lütfen bu alanı doldurun." message should be displayed
+    Then "Please fill out this field." message should be displayed
     Examples:
       | email                   | password     |
       |                         | salesmanager |

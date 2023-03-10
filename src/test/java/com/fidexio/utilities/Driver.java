@@ -7,9 +7,11 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -35,6 +37,7 @@ public class Driver {
             } else {
                 browser = System.getProperty("BROWSER");
             }
+
             System.out.println("Browser: " + browser);
             switch (browser) {
                 case "remote-chrome":
@@ -54,25 +57,33 @@ public class Driver {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions options = new ChromeOptions();
-                    options.addArguments("--lang=en");
-                    driver = new ChromeDriver();
+                    options.addArguments(ConfigurationReader.getProperty("language"));
+                    driver = new ChromeDriver(options);
                     driver.manage().window().maximize();
                     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                     break;
                 case "chrome-headless":
                     WebDriverManager.chromedriver().setup();
+                    ChromeOptions options1 = new ChromeOptions();
+                    options1.addArguments(ConfigurationReader.getProperty("language"));
+                    driver = new ChromeDriver(options1);
                     driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
                     driver.manage().window().maximize();
                     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
+                    FirefoxOptions options2=new FirefoxOptions();
+                    options2.addArguments(ConfigurationReader.getProperty("language"));
+                    driver = new FirefoxDriver(options2);
                     driver.manage().window().maximize();
                     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                     break;
                 case "firefox-headless":
                     WebDriverManager.firefoxdriver().setup();
+                    FirefoxOptions options3=new FirefoxOptions();
+                    options3.addArguments(ConfigurationReader.getProperty("language"));
+                    driver = new FirefoxDriver(options3);
                     driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
                     driver.manage().window().maximize();
                     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
