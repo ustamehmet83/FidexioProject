@@ -46,7 +46,7 @@ public class Login_Step_Definitions {
 
     @Then("user should be on the dashboard")
     public void user_should_be_on_the_dashboard() {
-       BrowserUtilities.titleVerify();
+       BrowserUtilities.titleVerify("#Inbox - Odoo");
     }
 
     @When("user enters invalid mail {string} or password{string}")
@@ -84,7 +84,6 @@ public class Login_Step_Definitions {
     @And("user press enter key of the keyboard")
     public void userPressEnterKeyOfTheKeyboard() {
         loginPage.loginBtn.sendKeys(Keys.ENTER);
-        BrowserUtilities.titleVerify();
 
     }
 
@@ -93,5 +92,15 @@ public class Login_Step_Definitions {
         String actualPasswordType="password";
         String expectedPasswordType=loginPage.loginPass.getAttribute("type");
         Assert.assertTrue(actualPasswordType.equals(expectedPasswordType));
+    }
+
+    @When("user click on the Reset password link")
+    public void userClickOnTheLink() {
+       loginPage.resetPasswordBtn.click();
+    }
+
+    @Then("user land on the reset password page")
+    public void userLandOnTheResetPasswordPage() {
+        BrowserUtilities.verifyTitleContains("Reset password");
     }
 }

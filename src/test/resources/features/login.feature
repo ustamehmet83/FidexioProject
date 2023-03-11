@@ -1,10 +1,10 @@
-#Execution
+@US001
 Feature:Login Functionality
 
   Background:
     Given User is on login page
 
-  #Test Case
+  @FIDEX10-380
   Scenario Outline: User login with valid credentials
     When user enters valid email "<email>"
     And user enters valid password "<password>"
@@ -20,6 +20,7 @@ Feature:Login Functionality
       | posmanager49@info.com   | posmanager   |
       | posmanager50@info.com   | posmanager   |
 
+  @FIDEX10-382
   Scenario Outline: User login with invalid credentials
     When user enters invalid mail "<email>" or password"<password>"
     And user click login button
@@ -32,7 +33,8 @@ Feature:Login Functionality
       | abcdef46@info.com       | salesmanager |
       | abcdef47@info.com       | posmanager   |
       | abcdef47@info.com       | abcdef       |
-  @wip
+
+  @FIDEX10-383
   Scenario Outline: "Please fill out this field." message should be displayed
     When user enters empty mail "<email>" or password"<password>"
     And user click login button
@@ -46,11 +48,17 @@ Feature:Login Functionality
       | posmanager47@info.com   |              |
       | abcdef@info.com         |              |
       |                         |              |
+  @FIDEX10-384
+  Scenario:User land on the ‘reset password’ page after clicking on the "Reset password" link
+    When user click on the Reset password link
+    Then user land on the reset password page
 
-
+  @FIDEX10-385
   Scenario: User should see the password in bullet signs by default
+    And user enters valid password "salesmanager"
     Then user see the password in bullet signs
 
+  @FIDEX10-386
   Scenario: Verify if the ‘Enter’ key of the keyboard is working correctly on the login page.
     When user enters valid email "salesmanager55@info.com"
     And user enters valid password "salesmanager"

@@ -19,6 +19,9 @@ public class LoginPage {
     @FindBy (xpath = "//p[normalize-space()='Wrong login/password']")
     public WebElement alertMessage;
 
+    @FindBy (xpath = "//*[.='Reset Password']")
+    public WebElement resetPasswordBtn;
+
     public void login(String email,String password){
         loginUser.sendKeys(email);
         loginPass.sendKeys(password);
