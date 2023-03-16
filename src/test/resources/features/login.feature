@@ -34,6 +34,7 @@ Feature:Login Functionality
       | abcdef47@info.com       | posmanager   |
       | abcdef47@info.com       | abcdef       |
 
+
   @FIDEX10-383
   Scenario Outline: "Please fill out this field." message should be displayed
     When user enters empty mail "<email>" or password"<password>"

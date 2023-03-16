@@ -58,6 +58,7 @@ public class Driver {
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments(ConfigurationReader.getProperty("language"));
+                   //options.addArguments("--remote-allow-origins=*");
                     driver = new ChromeDriver(options);
                     driver.manage().window().maximize();
                     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
