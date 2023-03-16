@@ -6,6 +6,7 @@ import com.fidexio.utilities.BrowserUtilities;
 import com.fidexio.utilities.ConfigurationReader;
 import com.fidexio.utilities.Driver;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -18,18 +19,14 @@ public class Logout_Step_Definitions {
     LoginPage loginPage = new LoginPage();
     DashBoardPage dashBoardPage = new DashBoardPage();
 
-    @When("User on the login page")
-    public void user_on_the_login_page() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("fidexio.url"));
-    }
-
-    @When("User on the dashboard")
+    @Given("User on the dashboard")
     public void user_on_the_dashboard() {
+        Driver.getDriver().get(ConfigurationReader.getProperty("fidexio.url"));
         loginPage.login(ConfigurationReader.getProperty("email"), ConfigurationReader.getProperty("password"));
         loginPage.loginBtn.click();
     }
 
-    @When("User click logout button")
+    @When("User click username and logout button")
     public void user_click_logout_button() {
         dashBoardPage.TopBarName.click();
         dashBoardPage.LogOutBtn.click();
