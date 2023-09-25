@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         },
        features = "src/test/resources/features",
         glue = "com/fidexio/step_definitions",
-        tags = "@US002",
+        tags = "@smoke",
         dryRun = false,
         publish = true
 )
